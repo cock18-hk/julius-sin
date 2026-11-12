@@ -14,7 +14,7 @@
     <link rel="icon" type="image/svg+xml" href="img/icons/favicon.svg" />
     <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=8" />
   </head>
   <body>
     <a class="skip" href="#quiz-section">跳到問題</a>
@@ -22,11 +22,10 @@
       <div class="wrap header-inner">
         <a class="brand" href="index.html">Julius Sin</a>
         <nav aria-label="頁面">
-          <a href="index.html#start">現在可以問</a>
-          <a href="index.html#latest">最新資訊</a>
-          <a href="check.html" aria-current="page">初步篩檢</a>
+          <a href="index.html#latest">資訊</a>
+          <a href="check.html" aria-current="page">檢查</a>
           <a href="guide.html">家長工具</a>
-          <a href="index.html#download">下載</a>
+          <a href="measure.html">測量</a>
           <a href="index.html#about">關於</a>
         </nav>
       </div>
@@ -55,6 +54,7 @@
           <p><b>這份問卷做不到的事：</b>它不是診斷，也不能直接告訴孩子有沒有特殊學習需要（SEN）。只有醫生、教育心理學家等專業人員才能評估和診斷。</p>
           <p><b>你的答案去了哪裡：</b>哪裡都不去。計分全部在你的瀏覽器內完成，這個網站沒有伺服器，不會傳送或儲存你的答案。請不要填寫孩子的姓名。</p>
           <p><b>怎樣填：</b>根據孩子<b>過去六個月</b>的日常表現，每題選「不真實」、「有點真實」或「完全真實」。即使不太肯定，也請選最接近的一個，答齊 25 題。</p>
+          <p>做完想記低日常觀察、問邊個、屋企可以點做，打開<a href="guide.html">家長工具</a>。</p>
         </div>
       </section>
 
@@ -98,8 +98,9 @@
       <div class="wrap">Julius Sin · 家長先看原文，再決定要不要問</div>
     </footer>
 
+    <script src="js/measure.js?v=8"></script>
     <script src="js/sdq-data.js"></script>
-    <script src="js/check.js"></script>
+    <script src="js/check.js?v=8"></script>
     <script src="js/pwa.js"></script>
   </body>
 </html>

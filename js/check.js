@@ -148,6 +148,17 @@
     }
     box.appendChild(advice);
 
+    if (window.JuliusMeasure) {
+      box.appendChild(JuliusMeasure.buttons("check", "result", {
+        prompt: "這個結果有沒有幫你知道下一步？",
+        choices: [
+          ["useful", "有，知道問誰"],
+          ["unclear", "仍然不清楚"],
+          ["later", "現在用不上"]
+        ]
+      }));
+    }
+
     var again = el("button", "btn ghost", "重新填寫");
     again.type = "button";
     again.addEventListener("click", function () {

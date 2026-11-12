@@ -192,6 +192,9 @@
     top.append(copy);
 
     article.append(top, note, facts, summary, source, details);
+    if (window.JuliusMeasure) {
+      article.appendChild(JuliusMeasure.buttons("info", item.id));
+    }
     return article;
   }
 

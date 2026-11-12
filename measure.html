@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>測量：這個網站有沒有幫到家長 — Julius Sin</title>
+    <meta
+      name="description"
+      content="量的是產品成效：資訊寫得明不明白、檢查做完知不知道問誰、家長工具用不用得上。孩子的答案和分數不送出。"
+    />
+    <meta name="theme-color" content="#0d5c56" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Julius Sin" />
+    <link rel="icon" type="image/svg+xml" href="img/icons/favicon.svg" />
+    <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="css/styles.css?v=8" />
+  </head>
+  <body>
+    <a class="skip" href="#measure-local">跳到這部機的紀錄</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="index.html">Julius Sin</a>
+        <nav aria-label="頁面">
+          <a href="index.html#latest">資訊</a>
+          <a href="check.html">檢查</a>
+          <a href="guide.html">家長工具</a>
+          <a href="measure.html" aria-current="page">測量</a>
+          <a href="index.html#about">關於</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="kicker">產品成效</p>
+          <h1>這個網站有沒有幫到家長</h1>
+          <p class="lede">
+            量三部分：資訊寫得明不明白、檢查做完知不知道問誰、家長工具用不用得上。
+            打開一次不算成效。孩子的答案和分數不記在這裡。
+          </p>
+        </div>
+      </section>
+
+      <section class="wrap prose">
+        <h2>怎樣才算有效</h2>
+        <div class="measure-list">
+          <article>
+            <h3>資訊</h3>
+            <p>每則可以選「有用」「看不懂」或「現在用不上」。選了有用，這則才算有效。</p>
+          </article>
+          <article>
+            <h3>檢查</h3>
+            <p>做完問有沒有因此知道下一步問誰。知道，這部分才算有效。</p>
+          </article>
+          <article>
+            <h3>家長工具</h3>
+            <p>問這頁有沒有幫到。有用，才算有效。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="wrap prose" id="measure-local">
+        <h2>你這部機上的紀錄</h2>
+        <div id="measure-body"></div>
+        <p>
+          <a
+            class="btn"
+            id="measure-send"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdGTglqdimtNw7xSjySM3lKn-nDvNH44y61kIoaYX_KUVTOTQ/viewform"
+          >把次數告訴我（不送孩子的答案）</a>
+        </p>
+        <p>
+          按下去會打開意見表，並先填好這三部分的次數。不會帶孩子的答案或分數。
+          你仍要選你是誰。這頁只顯示這部機。其他家長的標記，要他們自己送出才看得到。
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">Julius Sin · 家長先看原文，再決定要不要問</div>
+    </footer>
+
+    <script src="js/measure.js?v=8"></script>
+    <script src="js/pwa.js"></script>
+    <script>
+      (function () {
+        var body = document.getElementById("measure-body");
+        var send = document.getElementById("measure-send");
+        if (!body || !window.JuliusMeasure) return;
+        send.href = JuliusMeasure.formUrl();
+
+        var info = JuliusMeasure.counts("info");
+        var check = JuliusMeasure.counts("check");
+        var guide = JuliusMeasure.counts("guide");
+
+        function block(title) {
+          var box = document.createElement("div");
+          box.className = "measure-log";
+          var h = document.createElement("h3");
+          h.textContent = title;
+          box.appendChild(h);
+          return box;
+        }
+        function addP(box, text) {
+          var p = document.createElement("p");
+          p.textContent = text;
+          box.appendChild(p);
+        }
+
+        var infoBox = block("資訊");
+        addP(infoBox, "有用 " + info.useful + "、看不懂 " + info.unclear + "、現在用不上 " + info.later + "。");
+        body.appendChild(infoBox);
+
+        var checkBox = block("檢查");
+        addP(checkBox, "知道下一步 " + check.useful + "、仍然不清楚 " + check.unclear + "、現在用不上 " + check.later + "。");
+        body.appendChild(checkBox);
+
+        var toolBox = block("家長工具");
+        addP(toolBox, "有用 " + guide.useful + "、看不懂 " + guide.unclear + "、現在用不上 " + guide.later + "。");
+        body.appendChild(toolBox);
+      })();
+    </script>
+  </body>
+</html>

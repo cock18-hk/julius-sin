@@ -90,7 +90,9 @@ a:hover {
 
 nav {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.55rem 1rem;
 }
 
 nav a {
@@ -1015,6 +1017,83 @@ dd {
   .scale-desc { grid-area: desc; }
 
   .next-who .who-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.measure-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.8rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.measure-list article {
+  background: var(--sheet);
+  border-radius: 0.8rem;
+  padding: 1rem 1.1rem;
+}
+
+.measure-list h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.measure-list p,
+.measure-log p {
+  margin: 0.15rem 0;
+}
+
+.measure-log {
+  margin: 0 0 1.2rem;
+}
+
+.measure-log h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+}
+
+.measure-votes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.measure-votes span {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.measure-vote {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.measure-vote[aria-pressed="true"] {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--sheet);
+}
+
+.measure-vote:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.check-measure {
+  margin: 1rem 0 0;
+}
+
+@media (max-width: 860px) {
+  .measure-list {
     grid-template-columns: 1fr;
   }
 }

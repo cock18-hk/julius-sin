@@ -559,6 +559,16 @@
   function renderFeedback() {
     var card = stepCard("💬", "你嘅意見");
     card.appendChild(el("p", "step-text", "用呢個工具嗰陣，有咩睇唔明、想多啲講邊方面、或者你嘅情況入面冇——話我知。你一句意見，幫到下一個家長。"));
+    if (window.JuliusMeasure) {
+      card.appendChild(JuliusMeasure.buttons("guide", "page", {
+        prompt: "呢頁有冇幫到你？",
+        choices: [
+          ["useful", "有用"],
+          ["unclear", "睇唔明"],
+          ["later", "而家用不上"]
+        ]
+      }));
+    }
     if (D.FEEDBACK_URL) {
       var a = el("a", "feedback", "填意見表（大約兩分鐘）");
       a.href = D.FEEDBACK_URL;

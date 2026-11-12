@@ -1,10 +1,12 @@
-var CACHE = "julius-sin-v2";
+var CACHE = "julius-sin-v12";
 var ASSETS = [
   "./",
   "./index.html",
   "./check.html",
   "./guide.html",
+  "./measure.html",
   "./css/styles.css",
+  "./css/styles.css?v=8",
   "./css/guide.css",
   "./js/app.js",
   "./js/news.js",
@@ -13,6 +15,7 @@ var ASSETS = [
   "./js/guide.js",
   "./js/guide-data.js",
   "./js/pwa.js",
+  "./js/measure.js",
   "./img/hero.svg",
   "./img/service.svg",
   "./img/research.svg",
@@ -32,7 +35,12 @@ var ASSETS = [
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return cache.addAll(ASSETS);
+      return Promise.all(ASSETS.map(function (url) {
+        return fetch(new Request(url, { cache: "reload" })).then(function (response) {
+          if (!response.ok) throw new Error(url);
+          return cache.put(url, response);
+        });
+      }));
     }).then(function () {
       return self.skipWaiting();
     })
@@ -55,6 +63,7 @@ self.addEventListener("activate", function (event) {
 
 self.addEventListener("fetch", function (event) {
   if (event.request.method !== "GET") return;
+  if (event.request.url.indexOf("/exam/") !== -1) return;
   event.respondWith(
     fetch(event.request).then(function (response) {
       var copy = response.clone();

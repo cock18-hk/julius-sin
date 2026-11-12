@@ -14,7 +14,7 @@
     <link rel="icon" type="image/svg+xml" href="img/icons/favicon.svg" />
     <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=8" />
   </head>
   <body>
     <a class="skip" href="#latest">跳到最新資訊</a>
@@ -22,11 +22,10 @@
       <div class="wrap header-inner">
         <a class="brand" href="#latest">Julius Sin</a>
         <nav aria-label="頁面">
-          <a href="#start">現在可以問</a>
-          <a href="#latest">最新資訊</a>
-          <a href="check.html">初步篩檢</a>
+          <a href="#latest">資訊</a>
+          <a href="check.html">檢查</a>
           <a href="guide.html">家長工具</a>
-          <a href="#download">下載</a>
+          <a href="measure.html">測量</a>
           <a href="#about">關於</a>
         </nav>
       </div>
@@ -42,11 +41,8 @@
           </p>
           <p class="tally" id="tally"></p>
           <p class="check-entry">
-            想知道孩子有沒有需要留意的困難？
-            <a href="check.html">做 5 分鐘初步篩檢</a>
-            或打開
-            <a href="guide.html">家長工具</a>
-            （答案不會傳走）。
+            這一頁是網頁，打開就看到資訊。檢查和家長工具也在網頁裡。
+            想知道這個網站有沒有幫到家長，看<a href="measure.html">測量</a>。
           </p>
         </div>
         <img
@@ -67,16 +63,16 @@
         <div id="start-list" class="start-list"></div>
       </section>
 
-      <section class="wrap picture-row" aria-label="工具">
+      <section class="wrap picture-row" aria-label="這個網站的兩樣">
+        <a class="picture-card" href="#latest">
+          <img src="img/research.svg" alt="一疊已核對過的資料" />
+          <p class="start-cat">資訊</p>
+          <p class="start-title">香港可以問誰，外地研究用不用做</p>
+        </a>
         <a class="picture-card" href="check.html">
           <img src="img/check.svg" alt="一位家長在桌上填觀察表，孩子坐在旁邊一起看" />
-          <p class="start-cat">初步篩檢</p>
-          <p class="start-title">25 題，約 5 分鐘</p>
-        </a>
-        <a class="picture-card" href="guide.html">
-          <img src="img/guide.svg" alt="一位家長蹲在孩子旁邊，邊看邊記低觀察" />
-          <p class="start-cat">家長工具</p>
-          <p class="start-title">記觀察、問邊個、屋企可以點做</p>
+          <p class="start-cat">檢查</p>
+          <p class="start-title">25 題，睇下有冇需要留意的困難</p>
         </a>
       </section>
 
@@ -88,25 +84,6 @@
         <div id="filters" class="filters" role="group" aria-label="按分類篩選"></div>
         <div id="feed" class="feed"></div>
         <p id="empty" class="empty" hidden>這個分類還沒有資料。</p>
-      </section>
-
-      <section class="wrap download art-split" id="download">
-        <img src="img/phone.svg" alt="一位家長拿著手機，孩子伸手指向螢幕" />
-        <div>
-          <h2>下載到手機</h2>
-          <p class="section-lead">
-            同一個 Julius Sin：最新資訊、初步篩檢，以及原來的 Julius 家長工具。
-            加到主畫面之後，看起來就像 APP。答案只留在你這部機。
-          </p>
-          <div class="download-actions">
-            <a class="btn" href="guide.html">打開家長工具</a>
-            <button class="btn ghost" type="button" data-install hidden>下載到手機</button>
-          </div>
-          <p class="install-hint" id="install-hint">
-            Android：用 Chrome 打開這頁，按「下載到手機」。
-            iPhone：用 Safari 打開，按底部分享，再選「加入主畫面」。
-          </p>
-        </div>
       </section>
 
       <section class="band" id="sources">
@@ -138,11 +115,20 @@
         <div>
         <h2>關於</h2>
         <p>
-          Julius Sin 把公開的自閉症資料整理給家長看。研究會標明仍是研究。政策和服務會寫下一步可以問誰。
-          同一頁也有原來的 Julius 家長工具，可以加到手機主畫面。
+          Julius Sin 整理公開的自閉症資料給家長看。研究會標明仍是研究。政策和服務會寫下一步可以問誰。
+          檢查用初步篩檢，之後可以用家長工具記低觀察。這兩樣在網頁裡，打開就看到。
+          想知道這個網站有沒有幫到家長，看測量。孩子的答案不送出。
         </p>
         <p>這裡不取代醫生、學校或評估，也不公開任何孩子的個人資料。</p>
-        <p class="updated">本頁整理日期：2026年10月18日。</p>
+
+        <h3>做這個網站的人</h3>
+        <p>
+          我是一個自閉症兒童的媽媽，做財務策劃。不是醫生，不是機構，沒有人替我背書。
+          每則資料都連回原文，你可以自己核實。點解收、點解唔收，規矩寫在「資料來源」。
+          我每星期更新，有紀錄才有信任。
+        </p>
+
+        <p class="updated">本頁整理日期：2026年11月12日。</p>
         </div>
       </section>
     </main>
@@ -151,8 +137,9 @@
       <div class="wrap">Julius Sin · 家長先看原文，再決定要不要問</div>
     </footer>
 
+    <script src="js/measure.js?v=8"></script>
     <script src="js/news.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=6"></script>
     <script src="js/pwa.js"></script>
   </body>
 </html>
